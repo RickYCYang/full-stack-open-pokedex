@@ -1,10 +1,6 @@
 name: Deployment pipeline
 
 on:
-  push:
-    branches:
-      - master
-      # note that your "main" branch might be called main instead of master
   pull_request:
     branches: [master]
     types: [opened, synchronize]
