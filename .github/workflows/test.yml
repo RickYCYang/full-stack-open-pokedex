@@ -4,8 +4,23 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
+  hello_world_job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Say hello
+        run: |
+          echo "Hello World!"
+      - name: Now it is
+        run: |
+          date
+      - name: Run ls -l
+        run: |
+          ls -l
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
@@ -23,22 +38,11 @@ jobs:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
   a_test_job2:
+    ${{ github.event_name == 'push' }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: commit messages 2
         env:
           COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
-          COMMIT_MESSAGES_BOOL: ${{ contains(join(github.event.commits.*.message),'#skip') }}
-          TEST: ${{ !contains(join(github.event.commits.*.message),'#skip') }}
         run: echo "$COMMIT_MESSAGES"
-  a_test_job3:
-    if: ${{ !contains(join(github.event.commits.*.message),'#skip') }}
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: commit messages 2
-        env:
-          COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
-          COMMIT_MESSAGES_BOOL: ${{ contains(join(github.event.commits.*.message),'#skip') }}
-        run: echo "$COMMIT_MESSAGES \n $COMMIT_MESSAGES_BOOL"
