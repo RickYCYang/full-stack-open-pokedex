@@ -22,3 +22,12 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+  a_test_job2:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: commit messages 2
+        env:
+          COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
+          COMMIT_MESSAGES2: ${{ contains(join(github.event.commits.*.message),'#skip') }}
+        run: echo "$COMMIT_MESSAGES \n $COMMIT_MESSAGES2"
