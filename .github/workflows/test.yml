@@ -29,5 +29,5 @@ jobs:
       - name: commit messages 2
         env:
           COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
-          COMMIT_MESSAGES2: ${{ contains(join(github.event.commits.*.message),'#skip') }}
-        run: echo "$COMMIT_MESSAGES \n $COMMIT_MESSAGES2"
+          COMMIT_MESSAGES_BOOL: ${{ contains(join(github.event.commits.*.message),'#skip') }}
+        run: echo "$COMMIT_MESSAGES \n $COMMIT_MESSAGES_BOOL"
