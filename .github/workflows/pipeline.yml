@@ -15,9 +15,8 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       REPO_OWNER: RickYCYang
+      DEFAULT_BUMP: patch
     steps:
       - uses: actions/checkout@master
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
-        with:
-          fetch-depth: '0'
