@@ -31,7 +31,7 @@ jobs:
           COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
           COMMIT_MESSAGES_BOOL: ${{ contains(join(github.event.commits.*.message),'#skip') }}
           TEST: ${{ !contains(join(github.event.commits.*.message),'#skip') }}
-        run: echo "$COMMIT_MESSAGES \n $COMMIT_MESSAGES_BOOL \n $TEST \n ${{ !contains(join(github.event.commits.*.message),'#skip') }}"
+        run: echo "$COMMIT_MESSAGES"
   a_test_job3:
     if: ${{ !contains(join(github.event.commits.*.message),'#skip') }}
     runs-on: ubuntu-20.04
