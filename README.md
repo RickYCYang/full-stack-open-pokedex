@@ -22,3 +22,12 @@ Deploy on Fly.io, install [flyctl](https://fly.io/docs/hands-on/install-flyctl/)
 `flyctl ssh console` to connect to the server
 
 fly.toml is the configuration file for deployment
+
+## CI
+
+CI flow is triggered by github workflow.
+Versioing and tagging by the action from [anotherNick](https://github.com/anothrNick/github-tag-action)
+
+## CI Notification
+
+Notify to Discord group through github action [Discord Webhook Notify](https://github.com/marketplace/actions/discord-webhook-notify)
