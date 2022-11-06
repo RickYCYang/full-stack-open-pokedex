@@ -31,3 +31,7 @@ Versioing and tagging by the action from [anotherNick](https://github.com/anothr
 ## CI Notification
 
 Notify to Discord group through github action [Discord Webhook Notify](https://github.com/marketplace/actions/discord-webhook-notify)
+
+## Exercises 11.20 - 11.21
+
+Please refer to [repository](https://github.com/RickYCYang/2021f2e-taiwan-travel-advisor)
